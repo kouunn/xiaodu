@@ -1,0 +1,15 @@
+<h1>小度</h1>
+<p>Find me in app/views/nokogiri/index.html.erb</p>
+
+<%= form_tag({action: "index"}, method: "get") do %>
+
+    <div class="input-group">
+    	<span class="input-group-addon"><i class="fa x fa-search"></i></span>
+		<%= text_field_tag(:search,nil, placeholder:"请输入搜索关键字",class:"form-control") %>
+		<span class="input-group-btn">
+		 <%= submit_tag("搜一搜", class: "btn btn-primary") %>
+		</span>
+		<iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe>
+	</div>
+<% end %> 
+<%= raw @result %>
