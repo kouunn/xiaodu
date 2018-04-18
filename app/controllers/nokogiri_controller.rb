@@ -3,7 +3,7 @@ require 'net/http'
 class NokogiriController < ApplicationController
   def index
   	@key_word = params[:search]
-  	baidu_url = URI.escape("https://www.baidu.com/s?wd=#{@key_word}")
+  	baidu_url = URI.escape('https://www.baidu.com/s?wd=#{@key_word}')
   	@result = Nokogiri::HTML(open(baidu_url))
   	
 
