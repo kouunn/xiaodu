@@ -6,6 +6,9 @@ class NokogiriController < ApplicationController
   	baidu_url = URI.escape("http://www.baidu.com/s?wd=#{@key_word}")
   	@result = Nokogiri::HTML(open(baidu_url))
   	
+
+	@baidu_url = open('http://www.baidu.com/link?url=s6Wp04kwZ2XF9pjFbw5TnZqr2b-zAmMpdv-eXiSNtu0Yuo8kkPKnwBO3rNnI7lgE').meta
+	
   end
 
   def search_result
