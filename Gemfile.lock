@@ -63,9 +63,6 @@ GEM
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     erubi (1.7.1)
-    es5-shim-rails (4.0.1)
-      actionpack (>= 3.1)
-      railties (>= 3.1)
     execjs (2.7.0)
     ffi (1.9.23)
     globalid (0.4.1)
@@ -182,7 +179,6 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
-  es5-shim-rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   open_uri_redirections
