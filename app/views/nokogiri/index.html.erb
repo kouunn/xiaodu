@@ -1,24 +1,87 @@
-<h1>小度</h1>
-<p>Find me in app/views/nokogiri/index.html.erb</p>
 
-<h1>解密结果</h1>
+<head>
+  <!--  Meta  -->
+  <meta charset="UTF-8" />
+  <title>小度</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--  Styles  -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 
 
-<% @results.each do |k|%>
-    <p><%= k %></p>
-<% end %>
+</head>
+
+  <div class="main-container" id="main-container">
+    <nav class="nav">
+      <div class="nav__container">
+        <a href="/" class="nav__logo"></a>
+        <p class="nav__description">Baidu search project by <a class="nav__link" href="https://kou2n.github.io" target="_blank">KoU2n</a></p>
+      </div>
+    </nav>
+
+    <section class="section">
+      <div class="screen screen--slide-right screen--active screen--initial" id="landing">
+        <div class="landing__heading">
+          <h1>百度一下</h1>
+          <h3>众里寻他千百度,一蓑烟雨任平生</h3>
+        </div>
 
 
-<%= form_tag({action: "index"}, method: "get") do %>
+        <%= form_tag({action: "index"}, method: "get",class: "form", autocomplete: "off") do %>
 
-    <div class="input-group">
-        <span class="input-group-addon"><i class="fa x fa-search"></i></span>
-        <%= text_field_tag(:search,nil, placeholder:"请输入搜索关键字",class:"form-control") %>
-        <span class="input-group-btn">
-         <%= submit_tag("搜一搜", class: "btn btn-primary") %>
-        </span>
-        <iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe>
+            <div class="field" id="field">
+
+                <%= text_field_tag(:search,nil, placeholder:"想搜索什么呢?",class:"field__input") %>
+
+	 			<%= button_to "new",{class: 'field__submit'}  do %>
+	 			  <span class="ion-arrow-right-c"></span>
+	 			<% end %>
+
+                <iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe>
+            </div>
+
+
+        <% end %> 
+
+            <p class="field__info">* 拒绝校园网block</p>
+
+      </div>
+
+      <div class="screen screen--slide-left" id="output">
+        <div class="haiku__container">
+          <h2 id="haiku-title" class="haiku__title"></h2>
+          <div class="haiku__content" id="haiku"></div>
+          <div class="haiku__actions">
+            <button class="round-button round-button--spin ion-android-refresh" id="refresh"></button>
+            <a id="twitter-share" target="_blank" class="round-button ion-social-twitter" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter" ></a>
+          </div>
+        </div>
+        <button class="back-button" id="back"><span class="icon ion-arrow-left-c"></span> Back</button>
+      </div>
+    </section>
+
+  </div>
+  <div class="modal" id="modal">
+    <div class="modal__container">
+      <h2 class="modal__heading">the project.</h2>
+      <p>Something something</p>
+      <h2 class="modal__heading">the creator.</h2>
+      <p>me!</p>
     </div>
-<% end %> 
+    <button class="modal__close" id="close-modal">&times;</button>
+  </div>
+  <!-- Scripts -->
 
-<%= raw @result %>
+
+
+	<section class="section">
+
+	   <p>      
+	    <% @results.each do |k|%>
+	        <p><%=  link_to k[:title],k[:true_url] ,target:"_blank"  %></p>
+	       
+	        
+	    <% end %>
+	   </p>
+
+	</div>
+	</section>
