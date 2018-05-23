@@ -444,7 +444,7 @@ h3 {
 @media (min-width: 500px) {
   .haiku__container {
     min-width: 360px;
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
 }
 

@@ -1,0 +1,17 @@
+
+
+
+<div class="haiku__container">
+  
+ 
+
+  <% @results.each do |k|%>
+  	 <h2 id="haiku-title" class="haiku__title"></h2>
+     
+     <div class="haiku__content" id="haiku"><%=  link_to k[:title],k[:true_url] ,target:"_blank"  %></div>
+      
+  <% end %>
+
+</div>
+<button class="back-button" id="back"><span class="icon ion-arrow-left-c"></span> <a href="/">返回</a></button>
+

@@ -11,13 +11,17 @@ class NokogiriController < ApplicationController
     @result=doc
 
     @results = []
-    doc.css('.t').each_with_index do |item,index|
+    doc.css('.result .t').each_with_index do |item,index|
       url=URI.extract(item.to_html).first
 
       @results[index] = {
         :title => item.at_css("a").content,
         :true_url => get_real_url(item.at_css("a")[:href])
       }
+    respond_to do |format|
+      format.html
+      format.js
+    end
     end
 
   	#baidu_url = URI.escape('https://www.baidu.com/s?wd=#{@key_word}')
