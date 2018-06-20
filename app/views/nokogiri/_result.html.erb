@@ -1,17 +1,51 @@
 
+<div class="search">
+	<%= form_tag({action: "index"}, method: "get",class: "form", autocomplete: "off",:remote => true) do %>
+
+	    <div class="field" id="field">
+
+	        <%= text_field_tag(:search,nil, placeholder:"想搜索什么呢?",class:"field__input") %>
+
+		 			<%= button_to "new",{class: 'field__submit'}  do %>
+		 			  <span class="ion-arrow-right-c"></span>
+		 			<% end %>
+
+	        <iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe>
+	    </div>
 
 
-<div class="haiku__container">
-  
- 
-
-  <% @results.each do |k|%>
-  	 <h2 id="haiku-title" class="haiku__title"></h2>
-     
-     <div class="haiku__content" id="haiku"><%=  link_to k[:title],k[:true_url] ,target:"_blank"  %></div>
-      
-  <% end %>
+	<% end %> 
 
 </div>
-<button class="back-button" id="back"><span class="icon ion-arrow-left-c"></span> <a href="/">返回</a></button>
+
+
+<div class="results">
+  <ul class="list img-list" >
+  	<% @results.each do |k|%>
+
+  		 <li>
+  	
+
+
+  		   	<%# link_to(k), class: "inner" do %>
+  		   	<%=  link_to (k[:url]),target:"_blank",class: "inner"  do  %>
+  		   		<div class="li-img">
+  		   		  <%= image_tag "no_photo.jpg" %>
+  		   		</div>
+  		   		<div class="li-text">
+  		   		  <h3 class="li-head"><%=   k[:title] %></h3>
+  		   		  <div class="li-sub">
+  		   		    <p><%= k[:abs]%></p>
+  		   		  </div>
+  		   		</div>
+  		   	<% end %>
+
+
+  		 </li>
+  	<% end %>
+
+  </ul>
+
+</div>
+
 

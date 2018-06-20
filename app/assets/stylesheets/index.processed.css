@@ -194,6 +194,7 @@ h3 {
 }
 
 .nav__container {
+
   margin: 0 auto;
   display: -ms-flexbox;
   display: flex;
@@ -203,6 +204,7 @@ h3 {
   align-items: baseline;
   -ms-flex-direction: column;
   flex-direction: column;
+
 }
 
 @media (min-width: 500px) {
@@ -241,7 +243,12 @@ h3 {
   -ms-flex: 1;
   flex: 1;
   background: #444;
+
+
+
+
 }
+
 
 @keyframes shrink {
   0% {
@@ -424,7 +431,7 @@ h3 {
 
 @media (min-width: 500px) {
   .haiku__title {
-    font-size: 3rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -438,13 +445,25 @@ h3 {
   -ms-flex: 1;
   flex: 1;
   font-size: 1rem;
-  line-height: 1.7;
+  line-height: 1.7;  
+ 
+
+
+
+  position: relative;
+  padding-top:1rem;
+  padding-left: 50px;
+  padding-bottom: 1rem;
+  margin-bottom: 0px;
+ 
+
 }
 
 @media (min-width: 500px) {
   .haiku__container {
     min-width: 360px;
     font-size: 1rem;
+
   }
 }
 
@@ -457,7 +476,8 @@ h3 {
 }
 
 .back-button {
-  margin: 4vw;
+
+
   justify-self: end;
   -ms-flex-item-align: start;
   align-self: flex-start;

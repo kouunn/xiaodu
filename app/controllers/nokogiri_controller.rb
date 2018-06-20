@@ -1,47 +1,38 @@
 require 'open-uri'
 require 'net/http'
-require 'open_uri_redirections'
+require 'json'
 
 class NokogiriController < ApplicationController
+
   def index
-  	@key_word = params[:search]
-
-    baidu_url = URI.escape("http://www.baidu.com/s?wd=#{@key_word}")
-    doc= Nokogiri::HTML(open(baidu_url))
-    @result=doc
-
-    @results = []
-    doc.css('.result .t').each_with_index do |item,index|
-      url=URI.extract(item.to_html).first
-
-      @results[index] = {
-        :title => item.at_css("a").content,
-        :true_url => get_real_url(item.at_css("a")[:href])
-      }
-    respond_to do |format|
-      format.html
-      format.js
+    @page_id = 0
+    if params[:search] != nil
+      @key_word = URI.encode(params[:search].to_s)
+      get_baidu_json
     end
-    end
-
-  	#baidu_url = URI.escape('https://www.baidu.com/s?wd=#{@key_word}')
-  	#@result = Nokogiri::HTML(open(baidu_url))
-  	
-
   end
 
-  def search_result
-
+  def next_page
+    @page_id+=10
+    get_baidu_json
   end
 
-  def get_real_url(url)
-    #input_url = URI.escape(url)
-    url+="&wd=&eqid=c88708b700042854000000065adc78de"
-    response = open(url,:allow_redirections => :safe).read
-    tmp_url =URI.extract(response, ["http", "https"])
-    tmp_url.first
-  rescue 
-    nil
+  def get_baidu_json
+      
+      
+      baidu_json = URI.parse("http://www.baidu.com/s?wd=#{@key_word}&pn=#{@page_id}&rn=5&tn=json")
+      json = Net::HTTP.get(baidu_json)
+      result = JSON.parse(json)
+      @results = []
+      result["feed"]["entry"].each_with_index do |item,index|
+        @results[index] = {
+          :title => item["title"],
+          :url => item["url"],
+          :abs => item["abs"]
+        }
+        break if index == 4
+      end
+
   end
 
 end

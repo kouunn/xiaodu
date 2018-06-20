@@ -10,6 +10,9 @@
 
 </head>
 
+
+
+
   <div class="main-container" id="main-container">
     <nav class="nav">
       <div class="nav__container">
@@ -19,6 +22,8 @@
     </nav>
 
     <section class="section">
+
+
       <div class="screen screen--slide-right screen--active screen--initial" id="landing">
         <div class="landing__heading">
           <h1>百度一下</h1>
@@ -32,9 +37,9 @@
 
                 <%= text_field_tag(:search,nil, placeholder:"想搜索什么呢?",class:"field__input") %>
 
-	 			<%= button_to "new",{class: 'field__submit'}  do %>
-	 			  <span class="ion-arrow-right-c"></span>
-	 			<% end %>
+        	 			<%= button_to "new",{class: 'field__submit'}  do %>
+        	 			  <span class="ion-arrow-right-c"></span>
+        	 			<% end %>
 
                 <iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe>
             </div>
@@ -46,25 +51,25 @@
 
       </div>
 
-      <div class="screen screen--slide-left" id="output">
-  
+      <div class="screen screen--slide-left screen--initial" id="output" >
+
+        
       </div>
+
+     
+
     </section>
 
 
+
   </div>
-  <div class="modal" id="modal">
-    <div class="modal__container">
-      <h2 class="modal__heading">the project.</h2>
-      <p>Something something</p>
-      <h2 class="modal__heading">the creator.</h2>
-      <p>me!</p>
-    </div>
-    <button class="modal__close" id="close-modal">&times;</button>
-  </div>
-  <!-- Scripts -->
+
+<script>
+
+
+
+</script>
 
 
 
 
-	</section>
